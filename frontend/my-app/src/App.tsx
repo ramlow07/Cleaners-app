@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import LoginPage from "./pages/login";
-
+import RegisterPage from "./pages/register";
 // TODO: @COMPONENTS: REGISTER AND HOME PAGE.
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
       </nav>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
       </Routes>
     </Router>
   );
