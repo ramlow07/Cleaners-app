@@ -34,6 +34,3 @@ function App() {
 }
 
 export default App;
-
-//<Route path="/" element={<HomePage />} />
-// <Route path="/register" element={<RegisterPage />} />
