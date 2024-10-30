@@ -9,9 +9,9 @@ import HomePage from "./pages/home";
 function App() {
   return (
     <Router>
-      <div className="navbar flex flex-row justify-center align-center">
-        <nav className="flex space-y-4">
-          <ul>
+      <div className="navbar flex flex-row justify-center items-center">
+        <nav>
+          <ul className="flex space-x-10">
             <li>
               <Link to="/home">Home</Link>
             </li>
