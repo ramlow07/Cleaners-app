@@ -1,21 +1,23 @@
-function HomePage() {
+import React from "react";
+const HomePage = () => {
   return (
-    <div className="main-container flex flex-col items-center justify-center h-screen bg-gray-400">
-      <div className="features flex flex-col items-center justify-center h-32 bg-blue-400 p-4 rounded-md shadow-lg mb-4">
-        <h2 className="text-xl font-semibold mb-2">Technologies Used</h2>
-        <ul className="list-disc list-inside">
-          <li>React</li>
-          <li>TypeScript</li>
-          <li>Tailwind CSS</li>
-          <li>Node.js</li>
-        </ul>
+    <section className="flex items-center justify-center min-h-screen bg-green-100">
+      <div className="hero text-center px-4">
+        <h1 className="text-black text-xl mb-2 font-bold">
+          Para economizar tempo, vá de FAXINEI.
+        </h1>
+        <p className="mb-4">Sua salvação para os dias de correria.</p>
+        <div className="flex justify-center space-x-4">
+          <button className="bg-white rounded-3xl hover:bg-blue-300 shadow-md transition">
+            Quero contratar uma colaboradora.
+          </button>
+          <button className="bg-white rounded-3xl hover:bg-blue-300 shadow-md transition">
+            Quero oferecer meu serviço
+          </button>
+        </div>
       </div>
-      <div className="author flex flex-col items-center justify-center h-24 bg-green-400 p-4 rounded-md shadow-lg">
-        <h2 className="text-xl font-semibold mb-2">About the Creator</h2>
-        <p>Created by Luam Ramlow, Full-Stack Developer.</p>
-      </div>
-    </div>
+    </section>
   );
-}
+};
 
 export default HomePage;
