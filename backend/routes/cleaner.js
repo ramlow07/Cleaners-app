@@ -26,12 +26,15 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/cleaner", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const newCleaner = new Cleaner(req.body);
     await newCleaner.save();
     res.status(201).json(newCleaner);
+    console.log(newCleaner);
   } catch (err) {
     res.status(400).json({ message: "Error creating cleaner", error: err });
   }
 });
+
+module.exports = router;
