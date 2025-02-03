@@ -17,8 +17,6 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id.trim();
-    console.log("Receiveid ID", JSON.stringify(id));
-    console.log("ID Length:", id.length);
     const cleaner = await Cleaner.findById(id);
     if (!cleaner) {
       return res.status(404).json({ message: "Cleaner not found." });
