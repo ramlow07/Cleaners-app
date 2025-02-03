@@ -31,7 +31,6 @@ router.post("/", async (req, res) => {
     const newCleaner = new Cleaner(req.body);
     await newCleaner.save();
     res.status(201).json(newCleaner);
-    console.log(newCleaner);
   } catch (err) {
     res.status(400).json({ message: "Error creating cleaner", error: err });
   }
