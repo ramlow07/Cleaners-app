@@ -1,14 +1,11 @@
 var express = require("express");
 var router = express.Router();
-
-const Cleaner = require("../models/cleaner");
-
-module.exports = router;
+const Cleaner = require("../models/cleaner.js");
 
 router.get("/", async (req, res) => {
   try {
-    const cleaners = await Cleaner.find();
-    res.status(200).json(cleaners);
+    const allCleaners = await Cleaner.find();
+    res.status(200).json(allCleaners);
   } catch (err) {
     res.status(500).json({ message: "Error fetching cleaners", error: err });
   }
