@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 const Cleaner = require("../models/cleaner.js");
+const { route } = require("./index.js");
 
 router.get("/", async (req, res) => {
   try {
@@ -31,6 +32,29 @@ router.post("/", async (req, res) => {
     res.status(201).json(newCleaner);
   } catch (err) {
     res.status(400).json({ message: "Error creating cleaner", error: err });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  try {
+    const cleanerId = req.params.id;
+
+    const cleanerFound = await Cleaner.findById(cleanerId);
+    if (!cleanerFound) {
+      return res.status(404).json({ message: "Error finding cleaner" });
+    }
+    const updatedCleaner = await Cleaner.findByIdAndUpdate(
+      cleanerId,
+      req.body,
+      {
+        new: true,
+      }
+    );
+    res
+      .status(200)
+      .json({ message: "cleaner updated successfully", updatedCleaner });
+  } catch (err) {
+    res.status(400).json({ message: "Error updating cleaner.", error: err });
   }
 });
 
