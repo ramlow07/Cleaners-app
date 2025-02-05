@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const Cleaner = require("../models/cleaner.js");
-const { route } = require("./index.js");
 
 router.get("/", async (req, res) => {
   try {
