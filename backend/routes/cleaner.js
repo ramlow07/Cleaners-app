@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const Cleaner = require("../models/cleaner.js");
-const { route } = require("./index.js");
 
 router.get("/", async (req, res) => {
   try {
@@ -55,6 +54,24 @@ router.put("/:id", async (req, res) => {
       .json({ message: "cleaner updated successfully", updatedCleaner });
   } catch (err) {
     res.status(400).json({ message: "Error updating cleaner.", error: err });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const cleanerId = req.params.id;
+    const cleanerIdVerify = await Cleaner.findById(cleanerId);
+
+    if (!cleanerIdVerify) {
+      return res.status(404).json({ message: "Error finding cleaner." });
+    }
+
+    await Cleaner.findByIdAndDelete(cleanerId);
+    return res.status(200).json({ message: "Cleaner deleted successfully" });
+  } catch (err) {
+    return res
+      .status(500)
+      .json({ message: "Error deleting cleaner.", error: err });
   }
 });
 
