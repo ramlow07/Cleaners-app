@@ -1,8 +1,8 @@
 import React from "react";
-import HeroSection from "../components/HeroSection";
-import SocialProofSection from "../components/SocialProofSection";
-import Footer from "../components/Footer";
-import BenefitsSection from "../components/BenefitsSection";
+import HeroSection from "../components/homepage/HeroSection";
+import SocialProofSection from "../components/homepage/SocialProofSection";
+import Footer from "../components/homepage/Footer";
+import BenefitsSection from "../components/homepage/BenefitsSection";
 const HomePage = () => {
   return (
     <div className="homepage">
