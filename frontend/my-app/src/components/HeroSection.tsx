@@ -1,18 +1,22 @@
 import React from "react";
+
 const HeroSection = () => {
   return (
-    <section className="hero flex items-center justify-center min-h-screen bg-green-100">
-      <div className="text-center px-4">
-        <h1 className="text-black text-xl mb-2 font-bold">
-          Para economizar tempo, vá de FAXINEI.
+    <section className="hero flex items-center justify-center min-h-screen bg-green-100 px-6">
+      <div className="max-w-3xl text-center">
+        <h1 className="text-black text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+          If you want to save your time, better call the{" "}
+          <span className="text-green-700">CLEANERS APP</span>.
         </h1>
-        <p className="mb-4">Sua salvação para os dias de correria.</p>
-        <div className="flex justify-center space-x-4">
-          <button className="bg-white rounded-3xl hover:bg-blue-300 shadow-md transition">
-            Quero contratar uma colaboradora.
+        <p className="text-gray-700 text-lg sm:text-xl mb-6">
+          Your better friend when the the time is short.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
+          <button className="bg-white text-gray-900 font-medium py-3 px-6 rounded-full shadow-lg hover:bg-blue-300 transition duration-300">
+            I want to hire a CLEANER.
           </button>
-          <button className="bg-white rounded-3xl hover:bg-blue-300 shadow-md transition">
-            Quero oferecer meu serviço
+          <button className="bg-white text-gray-900 font-medium py-3 px-6 rounded-full shadow-lg hover:bg-blue-300 transition duration-300">
+            I want to offer my services.
           </button>
         </div>
       </div>
