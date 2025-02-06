@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const indexRouter = require("./routes/index");
 const authRouter = require("./routes/auth");
 const cors = require("cors");
+const cleanerRouter = require("./routes/cleaner");
 
 const corsOptions = {
   origin: "http://localhost:8080", // Allowing the frontend URL
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
+app.use("/cleaners", cleanerRouter);
 
 app.listen(port, function () {
   console.log(`🚀 Listening on port ${port}`);
