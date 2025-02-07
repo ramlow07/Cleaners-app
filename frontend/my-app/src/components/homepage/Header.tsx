@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header className="bg-white shadow-md py-4">
-      <div className="container mx-auto flex justify-center">
-        <nav>
-          <ul className="flex space-x-10 text-lg font-medium">
+      <div className="container mx-auto my-auto flex justify-between">
+        <div className="flex size-12 justify-between">
+          <img src="/cleaners-app-logo.svg" alt="Logo" />
+        </div>
+        <nav className="flex align-center mx-auto">
+          <ul className="flex space-x-12 text-lg font-medium">
             <li>
               <Link
                 to="/home"
