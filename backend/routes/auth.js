@@ -59,25 +59,30 @@ const {
 // Login request
 router.post("/login", async (req, res) => {
   try {
+    console.log("Login attempt with:", req.body); // DEBUGGING LOG
     const { email, password } = req.body;
 
     const user = await User.findOne({ email: email });
 
-    if (!user)
+    if (!user) {
+      console.log("DIFFERENT USER:");
       return res.status(500).json({
         message: "User doesn't exist!",
         type: "error",
       });
+    }
 
     const isMatch = await compare(password, user.password);
 
-    if (!isMatch)
+    if (!isMatch) {
+      console.log("PASSWORD INCORRECT");
       return res.status(500).json({
         message: "Password is incorrect!",
         type: "error",
       });
+    }
 
-    const accessToken = createAccesToken(user._id);
+    const accessToken = createAccessToken(user._id);
     const refreshToken = createRefreshToken(user._id);
 
     user.refreshtoken = refreshToken;
@@ -86,6 +91,7 @@ router.post("/login", async (req, res) => {
     sendRefreshToken(res, refreshToken);
     sendAccessToken(req, res, accessToken);
   } catch (error) {
+    console.log("UNEXPECTED ERROR", error);
     res.status(500).json({
       type: "error",
       message: "An error occurred while signing in.",
