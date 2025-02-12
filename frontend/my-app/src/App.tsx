@@ -5,6 +5,7 @@ import LoginPage from "./pages/login";
 import RegisterPage from "./pages/register";
 import HomePage from "./pages/home";
 import Header from "./components/homepage/Header";
+import CleanerProfile from "./components/cleanerProfile/profilePage";
 // TODO: @COMPONENTS: REGISTER AND HOME PAGE.
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <Router>
       <Header></Header>
       <Routes>
+        <Route path="/cleanerprofile" element={<CleanerProfile />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/home" element={<HomePage />} />
