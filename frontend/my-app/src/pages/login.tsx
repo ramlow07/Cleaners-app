@@ -29,6 +29,7 @@ function LoginPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
+      console.log("Sending request with data:", formData);
       const response = await axios.post(
         "http://localhost:8080/auth/login",
         formData
