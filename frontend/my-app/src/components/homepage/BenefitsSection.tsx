@@ -1,11 +1,8 @@
 import React from "react";
-import { FaClock } from "react-icons/fa";
-import { IconType } from "react-icons";
 
 interface Benefit {
   title: string;
   description: string;
-  icon: IconType;
 }
 
 const BenefitsSection: React.FC = () => {
@@ -14,7 +11,6 @@ const BenefitsSection: React.FC = () => {
       title: "Save Time for What Matters",
       description:
         "Spend your time on things you love while we handle the cleaning.",
-      icon: FaClock,
     },
   ];
 
