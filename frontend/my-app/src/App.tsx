@@ -7,6 +7,7 @@ import HomePage from "./pages/home";
 import Header from "./components/homepage/Header";
 import CleanerProfile from "./components/cleanerProfile/profilePage";
 import CleanerList from "./components/cleanerList/cleanerList";
+import CleanerRegister from "./components/cleanerRegister/cleanerRegister";
 // TODO: @COMPONENTS: REGISTER AND HOME PAGE.
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Route path="/cleanerprofile" element={<CleanerProfile />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="cleaner-register" element={<CleanerRegister />}></Route>
         <Route path="/home" element={<HomePage />} />
       </Routes>
     </Router>
