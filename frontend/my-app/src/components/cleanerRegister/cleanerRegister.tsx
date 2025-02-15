@@ -24,11 +24,10 @@ function CleanerRegister() {
   const [message, setMessage] = useState("");
 
   const handleCheckboxChange = (services: string) => {
-    setSelectedServices(
-      (prev) =>
-        prev.includes(services)
-          ? prev.filter((s) => s !== services) // ✅ Correctly closed parenthesis
-          : [...prev, services] // ✅ Correctly formatted
+    setSelectedServices((prev) =>
+      prev.includes(services)
+        ? prev.filter((s) => s !== services)
+        : [...prev, services]
     );
   };
 
