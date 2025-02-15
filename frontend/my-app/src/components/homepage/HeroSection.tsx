@@ -11,13 +11,15 @@ const HeroSection = () => {
         <p className="text-gray-700 text-lg sm:text-xl mb-6">
           Your better friend when the the time is short.
         </p>
-        <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-          <button className="bg-white text-gray-900 font-medium py-3 px-6 rounded-full shadow-lg hover:bg-green-300 transition duration-300">
-            I want to hire a CLEANER.
-          </button>
-          <button className="bg-white text-gray-900 font-medium py-3 px-6 rounded-full shadow-lg hover:bg-green-300 transition duration-300">
-            I want to offer my services.
-          </button>
+        <div className="flex flex-col sm:flex-row justify-center space-y-3 sm:space-y-0 sm:space-x-4 ">
+          <a rel="stylesheet" href="/cleanerlist">
+            <button className="bg-white text-gray-900 font-medium py-3 px-10 rounded-full shadow-lg hover:bg-green-300 transition duration-300">
+              I want to hire a CLEANER.
+            </button>
+            <button className="bg-white text-gray-900 font-medium py-3 px-10 rounded-full shadow-lg hover:bg-green-300 transition duration-300">
+              I want to offer my services.
+            </button>
+          </a>
         </div>
       </div>
     </section>

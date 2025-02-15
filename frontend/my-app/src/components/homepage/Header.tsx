@@ -20,6 +20,23 @@ const Header = () => {
             </li>
             <li>
               <Link
+                to="/cleanerprofile"
+                className="relative px-4 py-2 text-green-900 after:block after:h-[2px] after:w-0 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Profile
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/cleanerlist"
+                className="relative px-4 py-2 text-green-900 after:block after:h-[2px] after:w-0 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
+              >
+                Cleaners
+              </Link>
+            </li>
+
+            <li>
+              <Link
                 to="/register"
                 className="relative px-4 py-2 text-green-900 after:block after:h-[2px] after:w-0 after:bg-green-500 after:transition-all after:duration-300 hover:after:w-full"
               >
