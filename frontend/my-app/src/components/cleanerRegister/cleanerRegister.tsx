@@ -5,15 +5,32 @@ import { useNavigate } from "react-router-dom";
 function CleanerRegister() {
   const navigate = useNavigate();
 
+  const cleanerServicesList = [
+    "Deep Cleaning",
+    "House Cleaning",
+    "Apartment Cleaning",
+  ];
+
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    services: "",
+    services: [] as string[],
     location: "",
     contact: "",
   });
   const [message, setMessage] = useState("");
+
+  const handleCheckboxChange = (services: string) => {
+    setSelectedServices(
+      (prev) =>
+        prev.includes(services)
+          ? prev.filter((s) => s !== services) // ✅ Correctly closed parenthesis
+          : [...prev, services] // ✅ Correctly formatted
+    );
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -74,15 +91,18 @@ function CleanerRegister() {
             required
             className="mb-4 w-full p-2 border border-gray-300 rounded"
           />
-          <input
-            type="services"
-            name="services"
-            placeholder="services"
-            value={formData.services}
-            onChange={handleChange}
-            required
-            className="mb-4 w-full p-2 border border-gray-300 rounded"
-          />
+          <label htmlFor="">
+            <input
+              type="checkbox"
+              name="Deep Cleaning"
+              checked={formData.services.includes("Deep Cleaning")}
+              value={formData.services}
+              onChange={() => handleCheckboxChange("DeepCleaning")}
+              required
+              className="mb-4 w-full p-2 border border-gray-300 rounded"
+            />
+            Deep Cleaning
+          </label>
           <button
             type="submit"
             className="mb-4 w-full p-2 border border-blue-300 rounded"
