@@ -98,9 +98,9 @@ function CleanerRegister() {
             >
               <input
                 type="checkbox"
-                name="House Cleaning"
-                checked={formData.services.includes("House Cleaning")}
-                onChange={() => handleCheckboxChange("House Cleaning")}
+                name="Deep Cleaning"
+                checked={formData.services.includes("Deep Cleaning")}
+                onChange={() => handleCheckboxChange("Deep Cleaning")}
                 required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
