@@ -16,6 +16,8 @@ const HeroSection = () => {
             <button className="bg-white text-gray-900 font-medium py-3 px-10 rounded-full shadow-lg hover:bg-green-300 transition duration-300">
               I want to hire a CLEANER.
             </button>
+          </a>
+          <a rel="stylesheet" href="/cleaner-register">
             <button className="bg-white text-gray-900 font-medium py-3 px-10 rounded-full shadow-lg hover:bg-green-300 transition duration-300">
               I want to offer my services.
             </button>
