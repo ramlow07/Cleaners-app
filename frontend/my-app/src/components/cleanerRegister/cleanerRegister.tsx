@@ -101,7 +101,6 @@ function CleanerRegister() {
                 name="Deep Cleaning"
                 checked={formData.services.includes("Deep Cleaning")}
                 onChange={() => handleCheckboxChange("Deep Cleaning")}
-                required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
               Deep Cleaning
@@ -118,7 +117,6 @@ function CleanerRegister() {
                 name="House Cleaning"
                 checked={formData.services.includes("House Cleaning")}
                 onChange={() => handleCheckboxChange("House Cleaning")}
-                required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
               House Cleaning
@@ -134,7 +132,6 @@ function CleanerRegister() {
                 name="Apartment Cleaning"
                 checked={formData.services.includes("Apartment Cleaning")}
                 onChange={() => handleCheckboxChange("Apartment Cleaning")}
-                required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
               Apartment Cleaning
