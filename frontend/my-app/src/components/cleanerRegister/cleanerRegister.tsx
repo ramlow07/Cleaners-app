@@ -43,8 +43,13 @@ function CleanerRegister() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/register",
-        formData
+        "http://localhost:8080/cleaners",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       console.log(formData);
       setMessage(
