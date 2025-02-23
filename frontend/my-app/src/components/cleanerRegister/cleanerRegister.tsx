@@ -43,8 +43,13 @@ function CleanerRegister() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/register",
-        formData
+        "http://localhost:8080/cleaners",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       console.log(formData);
       setMessage(
@@ -62,7 +67,10 @@ function CleanerRegister() {
   return (
     <div className="main-container flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="login-container bg-white p-8 rounded shadow-md w-80">
-        <h2>Register</h2>
+        <h1>Welcome to CleanersAPP!</h1>
+        <h2 className="my-4">
+          Give the informations below to register and offer your services.
+        </h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -91,6 +99,7 @@ function CleanerRegister() {
             required
             className="mb-4 w-full p-2 border border-gray-300 rounded"
           />
+          <h1>Select the services you offer:</h1>
           <div className="label flex items-center gap-2">
             <label
               htmlFor=""
@@ -101,7 +110,6 @@ function CleanerRegister() {
                 name="Deep Cleaning"
                 checked={formData.services.includes("Deep Cleaning")}
                 onChange={() => handleCheckboxChange("Deep Cleaning")}
-                required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
               Deep Cleaning
@@ -118,7 +126,6 @@ function CleanerRegister() {
                 name="House Cleaning"
                 checked={formData.services.includes("House Cleaning")}
                 onChange={() => handleCheckboxChange("House Cleaning")}
-                required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
               House Cleaning
@@ -134,7 +141,6 @@ function CleanerRegister() {
                 name="Apartment Cleaning"
                 checked={formData.services.includes("Apartment Cleaning")}
                 onChange={() => handleCheckboxChange("Apartment Cleaning")}
-                required
                 className="mb-4 w-full p-2 border border-gray-300 rounded"
               />
               Apartment Cleaning
