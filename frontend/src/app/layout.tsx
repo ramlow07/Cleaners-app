@@ -1,7 +1,6 @@
 // import '../index.css' - activate it if outside css is in use
 
 import type { Metadata } from "next";
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Cleaners App",
