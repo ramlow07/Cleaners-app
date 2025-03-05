@@ -1,5 +1,4 @@
-const MONGO_URI =
-  "mongodb+srv://luamramlow:ideiafix@authdb.zctju3j.mongodb.net/?retryWrites=true&w=majority&appName=AuthDB";
+
 
 require("dotenv").config();
 
@@ -25,7 +24,7 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/cleaners", cleanerRouter);
 
-app.listen(port, function () {
+app.listen(port, function() => {
   console.log(`🚀 Listening on port ${port}`);
 });
 
