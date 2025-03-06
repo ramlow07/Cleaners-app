@@ -30,6 +30,7 @@
     "jwt"
   ],
   "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
     "@types/node": "^22.13.9",
     "drizzle-kit": "^0.30.5",
     "tsx": "^4.19.3",
