@@ -6,7 +6,7 @@ function CleanerRegister() {
   const navigate = useNavigate();
 
   const cleanerServicesList = [
-    "Deep Cleaning",
+    "House Cleaning",
     "House Cleaning",
     "Apartment Cleaning",
   ];
@@ -23,13 +23,13 @@ function CleanerRegister() {
   });
   const [message, setMessage] = useState("");
 
-  const handleCheckboxChange = (services: string) => {
-    setSelectedServices(
-      (prev) =>
-        prev.includes(services)
-          ? prev.filter((s) => s !== services) // ✅ Correctly closed parenthesis
-          : [...prev, services] // ✅ Correctly formatted
-    );
+  const handleCheckboxChange = (skill: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      services: prev.services.includes(skill)
+        ? prev.services.filter((s) => s !== skill)
+        : [...prev.services, skill],
+    }));
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,8 +43,13 @@ function CleanerRegister() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/register",
-        formData
+        "http://localhost:8080/cleaners",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
       console.log(formData);
       setMessage(
@@ -62,7 +67,10 @@ function CleanerRegister() {
   return (
     <div className="main-container flex flex-col items-center justify-center h-screen bg-gray-100">
       <div className="login-container bg-white p-8 rounded shadow-md w-80">
-        <h2>Register</h2>
+        <h1>Welcome to CleanersAPP!</h1>
+        <h2 className="my-4">
+          Give the informations below to register and offer your services.
+        </h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -91,18 +99,53 @@ function CleanerRegister() {
             required
             className="mb-4 w-full p-2 border border-gray-300 rounded"
           />
-          <label htmlFor="">
-            <input
-              type="checkbox"
-              name="Deep Cleaning"
-              checked={formData.services.includes("Deep Cleaning")}
-              value={formData.services}
-              onChange={() => handleCheckboxChange("DeepCleaning")}
-              required
-              className="mb-4 w-full p-2 border border-gray-300 rounded"
-            />
-            Deep Cleaning
-          </label>
+          <h1>Select the services you offer:</h1>
+          <div className="label flex items-center gap-2">
+            <label
+              htmlFor=""
+              className="flex flex-row-reverse gap-2 items-center cursor-pointer my-6 border border-spacing-2"
+            >
+              <input
+                type="checkbox"
+                name="Deep Cleaning"
+                checked={formData.services.includes("Deep Cleaning")}
+                onChange={() => handleCheckboxChange("Deep Cleaning")}
+                className="mb-4 w-full p-2 border border-gray-300 rounded"
+              />
+              Deep Cleaning
+            </label>
+          </div>
+
+          <div className="label flex items-center gap-2">
+            <label
+              htmlFor=""
+              className="flex flex-row-reverse gap-2 items-center cursor-pointer my-2 border border-spacing-2"
+            >
+              <input
+                type="checkbox"
+                name="House Cleaning"
+                checked={formData.services.includes("House Cleaning")}
+                onChange={() => handleCheckboxChange("House Cleaning")}
+                className="mb-4 w-full p-2 border border-gray-300 rounded"
+              />
+              House Cleaning
+            </label>
+          </div>
+          <div className="label flex items-center gap-2">
+            <label
+              htmlFor=""
+              className="flex flex-row-reverse gap-2 items-center cursor-pointer my-2 border border-spacing-2"
+            >
+              <input
+                type="checkbox"
+                name="Apartment Cleaning"
+                checked={formData.services.includes("Apartment Cleaning")}
+                onChange={() => handleCheckboxChange("Apartment Cleaning")}
+                className="mb-4 w-full p-2 border border-gray-300 rounded"
+              />
+              Apartment Cleaning
+            </label>
+          </div>
           <button
             type="submit"
             className="mb-4 w-full p-2 border border-blue-300 rounded"

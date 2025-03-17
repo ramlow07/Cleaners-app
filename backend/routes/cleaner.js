@@ -1,5 +1,5 @@
-var express = require("express");
-var router = express.Router();
+let express = require("express");
+let router = express.Router();
 const Cleaner = require("../models/cleaner.js");
 
 router.get("/", async (req, res) => {
@@ -26,10 +26,12 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    console.log("Received Data", req.body); // to log the request data
     const newCleaner = new Cleaner(req.body);
     await newCleaner.save();
     res.status(201).json(newCleaner);
   } catch (err) {
+    console.error("error creating cleaner", err);
     res.status(400).json({ message: "Error creating cleaner", error: err });
   }
 });

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 type CleanerType = {
   id: string;
   name: string;
+  skills: string;
 };
 
 export default function CleanerList() {
@@ -21,7 +22,7 @@ export default function CleanerList() {
     };
 
     fetchCleaners();
-  });
+  }, []);
 
   const filteredCleaners = cleaner.filter((cleaner) =>
     cleaner.name.toLowerCase().includes(search.toLowerCase())
