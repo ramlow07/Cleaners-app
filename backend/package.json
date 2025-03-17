@@ -8,6 +8,7 @@
     "dev": "nodemon app.js localhost 8080"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
     "bcryptjs": "2.4.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -29,7 +30,10 @@
     "jwt"
   ],
   "devDependencies": {
+    "@tsconfig/node22": "^22.0.0",
+    "@types/node": "^22.13.9",
     "drizzle-kit": "^0.30.5",
-    "tsx": "^4.19.3"
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
   }
 }
