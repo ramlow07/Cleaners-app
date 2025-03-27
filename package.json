@@ -6,7 +6,7 @@
     "Luam Ramlow <ramlowdev@proton.me>"
   ],
   "private": true,
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "npm@10.8.2",
   "workspaces": [
     "apps/*"
   ],
