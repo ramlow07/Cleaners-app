@@ -21,9 +21,6 @@ npm run dev:web
 ```bash
 # install turbo cli
 npm install turbo --global
-
-# install supabase cli
-npm install supabase --global
 ```
 
 ## Packages
