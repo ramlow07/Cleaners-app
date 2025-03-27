@@ -1,40 +1,45 @@
+import "dotenv/config";
+import express  from "express";
+import type { Express } from 'express'
+import cookieParser from "cookie-parser";
+import cors from "cors";
 
 
-require("dotenv").config();
+import indexRouter from "./routes/index";
+import authRouter from "./routes/auth";
+import cleanerRouter from "./routes/cleaner";
 
-const express = require("express");
-const cookieParser = require("cookie-parser");
-const indexRouter = require("./routes/index");
-const authRouter = require("./routes/auth");
-const cors = require("cors");
-const cleanerRouter = require("./routes/cleaner");
+import { db, client } from "./db/index";
+
 
 const corsOptions = {
   origin: "http://localhost:8080", // Allowing the frontend URL
 };
-const port = process.env.port || 8080;
-const app = express();
 
-app.options(cors());
-app.use(cors());
+const PORT = process.env.PORT || 8080;
+const app: Express = express();
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// Routes
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/cleaners", cleanerRouter);
 
-app.listen(port, function() => {
-  console.log(`🚀 Listening on port ${port}`);
+// Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
 
-const mongoose = require("mongoose");
 
-mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("MongoDB connections is established successfully 🎉");
-  });
+(async () => {
+  try {
+    await client`SELECT 1`; // Simple query to check connection
+    console.log("✅ PostgreSQL connection established successfully 🎉");
+  } catch (error) {
+    console.error("❌ Error connecting to PostgreSQL:", error);
+  }
+})();
