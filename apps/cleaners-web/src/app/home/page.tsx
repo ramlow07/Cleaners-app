@@ -1,8 +1,39 @@
 "use client"
 
-import { DataTableDemo } from "./components/DataTableDemo"
+import { DataTable } from "./components/DataTable"
 import { createClient } from "@/utils/supabase/client"
 import { useQuery } from "@tanstack/react-query"
+
+const columns = [
+  {
+    header: "Name",
+    accessorKey: "name",
+  },
+  {
+    header: "Email",
+    accessorKey: "email",
+  },
+  {
+    header: "Phone",
+    accessorKey: "phone",
+  },
+  {
+    header: "Location",
+    accessorKey: "location",
+  },
+  {
+    header: "Services",
+    accessorKey: "services",
+  },
+  {
+    header: "Price",
+    accessorKey: "price",
+  },
+  {
+    header: "Created At",
+    accessorKey: "created_at",
+  },
+]
 
 export default function Home() {
 
@@ -32,7 +63,7 @@ export default function Home() {
   return (
     <div className="container py-8 mx-auto">
       <h1 className="mb-6 text-3xl font-bold">Welcome Home</h1>
-      <DataTableDemo data={data} isLoading={isLoading} />
+      <DataTable data={data} columns={columns} isLoading={isLoading} />
     </div>
   )
 }
