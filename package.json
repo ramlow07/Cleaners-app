@@ -1,17 +1,27 @@
 {
   "name": "cleaners-app",
-  "description": "Cleaners APP",
+  "description": "Cleaners App",
   "version": "0.1.0",
   "authors": [
     "Luam Ramlow <ramlowdev@proton.me>"
   ],
   "private": true,
+  "packageManager": "yarn@1.22.17",
   "workspaces": [
-    "backend/*",
-    "frontend/*"
+    "apps/*"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ramlow07/Cleaners-app"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "dev:db": "cd apps/supabase && npx supabase start",
+    "dev:web": "turbo run dev --filter=@cleaners-app/cleaners-web"
+  },
+  "devDependencies": {
+    "supabase": "^2.20.5",
+    "turbo": "^2.4.4"
   }
 }
