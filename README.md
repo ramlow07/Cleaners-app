@@ -16,12 +16,6 @@ npm run dev:web
 # open web app at http://127.0.0.1:3000
 ```
 
-## TODO: remove this
-
-```bash
-# project pw: CVOs5SNLTh3qzTXq
-```
-
 ## Prep for first time setup
 
 ```bash
