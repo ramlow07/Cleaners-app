@@ -5,7 +5,7 @@ import { LoaderCircle, Github } from "lucide-react"
 import { useMutation } from "@tanstack/react-query"
 import { useRouter } from "next/navigation"
 
-import { supabase } from "@/lib/supabase"
+import { createClient } from "@/utils/supabase/client"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -16,17 +16,16 @@ type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>
 
 export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps) {
   const [email, setEmail] = React.useState<string>("")
-  const [password, setPassword] = React.useState<string>("")
   const router = useRouter()
+  const supabase = createClient()
 
-  // Email signup mutation
+  // Email signup mutation - updated to passwordless
   const emailSignup = useMutation({
-    mutationFn: async ({ email, password }: { email: string; password: string }) => {
-      return supabase.auth.signUp({
+    mutationFn: async ({ email }: { email: string }) => {
+      return supabase.auth.signInWithOtp({
         email,
-        password,
         options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
+          emailRedirectTo: `${window.location.origin}/auth/verify`,
         },
       })
     },
@@ -43,7 +42,7 @@ export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps)
       return supabase.auth.signInWithOAuth({
         provider: 'github',
         options: {
-          redirectTo: `${window.location.origin}/auth/callback`,
+          redirectTo: `${window.location.origin}/auth/verify`,
         },
       })
     },
@@ -56,7 +55,7 @@ export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps)
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
-    emailSignup.mutate({ email, password })
+    emailSignup.mutate({ email })
   }
 
   return (
@@ -85,28 +84,11 @@ export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps)
               required
             />
           </div>
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="password">
-              Password
-            </Label>
-            <Input
-              id="password"
-              placeholder="Password"
-              type="password"
-              autoCapitalize="none"
-              autoComplete="new-password"
-              autoCorrect="off"
-              disabled={isLoading}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
           <Button disabled={isLoading} type="submit">
             {isLoading && (
               <LoaderCircle className="w-4 h-4 mr-2 animate-spin" />
             )}
-            Register with Email
+            Continue with Email
           </Button>
         </div>
       </form>

@@ -5,6 +5,7 @@
     "reset": "supabase db reset || supabase start",
     "test": "supabase db test",
     "lint": "supabase db lint",
+    "gen:types": "supabase gen types typescript --local > ../cleaners-web/src/types/supabase.ts",
     "deploy": "supabase link --project-ref $SUPABASE_PROJECT_REF && supabase db push"
   }
 }

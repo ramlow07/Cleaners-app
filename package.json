@@ -18,7 +18,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "dev:db": "cd apps/supabase && npx supabase start",
-    "dev:web": "turbo run dev --filter=@cleaners-app/cleaners-web"
+    "dev:web": "turbo run dev --filter=@cleaners-app/cleaners-web",
+    "gen:types": "cd apps/supabase && npm run gen:types"
   },
   "devDependencies": {
     "supabase": "^2.20.5",
