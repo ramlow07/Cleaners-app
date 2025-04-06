@@ -38,3 +38,9 @@ npx supabase migration new <migration_name>
 ```bash
 npx supabase db reset
 ```
+
+## Generate types
+
+```bash
+npm run gen:types
+```
