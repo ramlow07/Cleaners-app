@@ -1,11 +1,11 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { UserAuthFormRegister } from "./components/user-auth-form"
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { UserAuthFormRegister } from "./components/user-auth-form";
 
-export default function RegistgerPage() {
+export default function RegisterPage() {
   return (
     <>
       <div className="md:hidden">
@@ -53,9 +53,7 @@ export default function RegistgerPage() {
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
-              <p className="text-lg">
-                &ldquo;Created by&rdquo;
-              </p>
+              <p className="text-lg">&ldquo;Created by&rdquo;</p>
               <footer className="text-sm">Luam</footer>
             </blockquote>
           </div>
@@ -92,5 +90,5 @@ export default function RegistgerPage() {
         </div>
       </div>
     </>
-  )
+  );
 }
