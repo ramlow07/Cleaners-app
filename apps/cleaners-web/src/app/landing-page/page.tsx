@@ -17,26 +17,26 @@ const LandingPage = () => {
 
       {/* Features Section */}
       <section className="py-20 px-6 grid md:grid-cols-3 gap-8 container mx-auto">
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <div className="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-200">
           <h2 className="text-2xl font-bold mb-2">Verified Cleaners</h2>
           <p>All our professionals are background-checked and highly rated.</p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <div className="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-200">
           <h2 className="text-2xl font-bold mb-2">Easy Booking</h2>
           <p>
-            Book a cleaner in minutes through our simple and intuitive platform.
+            Book a cleaner in minutes through our simple and intuitive platform. OK
           </p>
         </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <div className="bg-white p-6 rounded-lg shadow-md text-center hover:bg-gray-200">
           <h2 className="text-2xl font-bold mb-2">Affordable Pricing</h2>
           <p>Choose from flexible plans that fit your budget.</p>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="text-center py-20 bg-blue-600 text-white">
+      <section className="text-center py-20 bg-green-400 text-white">
         <h2 className="text-3xl font-bold mb-4">
-          Start Hiring Cleaners Today!
+          Start Hiring Cleaners TODAY IN A FEW CLICKS!
         </h2>
         <p className="mb-6">
           Sign up and get your first cleaning appointment booked now.
