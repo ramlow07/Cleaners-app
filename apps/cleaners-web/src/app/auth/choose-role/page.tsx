@@ -68,10 +68,10 @@ export default function ChooseRole() {
               <p className="text-md font-semibold text-muted-foreground">
                 Are you a CLEANER or a CONTRACTOR?
               </p>
-              <div className="">
-                <Button>I'm a CLEANER.</Button>
-                <Button>I'm a CONTRACTOR.</Button>
-              </div>
+            </div>
+            <div className="flex justify-center gap-x-2">
+              <Button>I'm a CLEANER.</Button>
+              <Button>I'm a CONTRACTOR.</Button>
             </div>
           </div>
         </div>
