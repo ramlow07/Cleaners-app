@@ -1,11 +1,18 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { UserAuthFormRegister } from "./components/user-auth-form";
 
 export default function RegisterPage() {
+  // getting role params from URL
+  const searchParams = useSearchParams();
+  const role = searchParams.get("role");
+
   return (
     <>
       <div className="md:hidden">
@@ -68,7 +75,7 @@ export default function RegisterPage() {
                 Enter your email below to create your account.
               </p>
             </div>
-            <UserAuthFormRegister />
+            <UserAuthFormRegister userRole={role ?? "user"} />
             <p className="px-8 text-sm text-center text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link
