@@ -1,12 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Button } from "@/components/ui/button";
 // import { UserAuthFormLogin } from "./components/user-auth-form"
 
 export default function ChooseRole() {
+  const router = useRouter();
+
+  const handleRoleSelection = (role: "cleaner" | "contractor") => {
+    router.push(`/auth/register?role=${role}`);
+  };
+
   return (
     <>
       <div className="md:hidden">
@@ -70,8 +78,12 @@ export default function ChooseRole() {
               </p>
             </div>
             <div className="flex justify-center gap-x-2">
-              <Button>I'm a CLEANER.</Button>
-              <Button>I'm a CONTRACTOR.</Button>
+              <Button onClick={() => handleRoleSelection("cleaner")}>
+                I'm a CLEANER.
+              </Button>
+              <Button onClick={() => handleRoleSelection("contractor")}>
+                I'm a CONTRACTOR.
+              </Button>
             </div>
           </div>
         </div>
