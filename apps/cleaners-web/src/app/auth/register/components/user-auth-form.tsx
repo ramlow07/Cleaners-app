@@ -1,23 +1,29 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { LoaderCircle, Github } from "lucide-react"
-import { useMutation } from "@tanstack/react-query"
-import { useRouter } from "next/navigation"
+import * as React from "react";
+import { LoaderCircle, Github } from "lucide-react";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
-import { createClient } from "@/utils/supabase/client"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { createClient } from "@/utils/supabase/client";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 // Add members to interface or use type directly
-type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>
+type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement> & {
+  userRole?: string;
+};
 
-export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps) {
-  const [email, setEmail] = React.useState<string>("")
-  const router = useRouter()
-  const supabase = createClient()
+export function UserAuthFormRegister({
+  userRole,
+  className,
+  ...props
+}: UserAuthFormProps) {
+  const [email, setEmail] = React.useState<string>("");
+  const router = useRouter();
+  const supabase = createClient();
 
   // Email signup mutation - updated to passwordless
   const emailSignup = useMutation({
@@ -27,35 +33,36 @@ export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps)
         options: {
           emailRedirectTo: `${window.location.origin}/auth/verify`,
         },
-      })
+      });
     },
     onSuccess: (data) => {
       if (data.data.user) {
-        router.push("/auth/verification")
+        router.push("/auth/verification");
       }
     },
-  })
+  });
 
   // GitHub OAuth mutation
   const githubSignIn = useMutation({
     mutationFn: async () => {
       return supabase.auth.signInWithOAuth({
-        provider: 'github',
+        provider: "github",
         options: {
           redirectTo: `${window.location.origin}/auth/verify`,
         },
-      })
+      });
     },
-  })
+  });
 
   // Combined error from either mutation
-  const error = emailSignup.error?.message || githubSignIn.error?.message || null
+  const error =
+    emailSignup.error?.message || githubSignIn.error?.message || null;
   // Combined loading state
-  const isLoading = emailSignup.isPending || githubSignIn.isPending
+  const isLoading = emailSignup.isPending || githubSignIn.isPending;
 
   async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault()
-    emailSignup.mutate({ email })
+    event.preventDefault();
+    emailSignup.mutate({ email });
   }
 
   return (
@@ -102,9 +109,9 @@ export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps)
           </span>
         </div>
       </div>
-      <Button 
-        variant="outline" 
-        type="button" 
+      <Button
+        variant="outline"
+        type="button"
         disabled={isLoading}
         onClick={() => githubSignIn.mutate()}
       >
@@ -116,5 +123,5 @@ export function UserAuthFormRegister({ className, ...props }: UserAuthFormProps)
         GitHub
       </Button>
     </div>
-  )
+  );
 }
