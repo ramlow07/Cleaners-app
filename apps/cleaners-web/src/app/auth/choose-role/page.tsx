@@ -2,16 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-
+import { useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import { UserAuthFormRegister } from "./components/user-auth-form";
+import { Button } from "@/components/ui/button";
+// import { UserAuthFormLogin } from "./components/user-auth-form"
 
-export default function RegisterPage() {
-  // getting role params from URL
-  const searchParams = useSearchParams();
-  const role = searchParams.get("role");
+export default function ChooseRole() {
+  const router = useRouter();
+
+  const handleRoleSelection = (role: "cleaner" | "contractor") => {
+    router.push(`/auth/register?role=${role}`);
+  };
 
   return (
     <>
@@ -33,13 +35,13 @@ export default function RegisterPage() {
       </div>
       <div className="container relative flex-col items-center justify-center hidden h-screen md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
-          href="/auth/login"
+          href="/auth/register"
           className={cn(
             buttonVariants({ variant: "ghost" }),
             "absolute right-4 top-4 md:right-8 md:top-8"
           )}
         >
-          Login
+          Register
         </Link>
         <div className="relative flex-col hidden h-full p-10 text-white bg-muted dark:border-r lg:flex">
           <div className="absolute inset-0 bg-zinc-900" />
@@ -68,31 +70,21 @@ export default function RegisterPage() {
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
-              <h1 className="text-2xl font-semibold tracking-tight">
-                Create Account
+              <h1 className="text-2xl font-bold tracking-tight">
+                Welcome to CleanersAPP!
               </h1>
-              <p className="text-sm text-muted-foreground">
-                Enter your email below to create your account.
+              <p className="text-md font-semibold text-muted-foreground">
+                Are you a CLEANER or a CONTRACTOR?
               </p>
             </div>
-            <UserAuthFormRegister userRole={role ?? "user"} />
-            <p className="px-8 text-sm text-center text-muted-foreground">
-              By clicking continue, you agree to our{" "}
-              <Link
-                href="/terms"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Terms of Service
-              </Link>{" "}
-              and{" "}
-              <Link
-                href="/privacy"
-                className="underline underline-offset-4 hover:text-primary"
-              >
-                Privacy Policy
-              </Link>
-              .
-            </p>
+            <div className="flex justify-center gap-x-2">
+              <Button onClick={() => handleRoleSelection("cleaner")}>
+                I'm a CLEANER.
+              </Button>
+              <Button onClick={() => handleRoleSelection("contractor")}>
+                I'm a CONTRACTOR.
+              </Button>
+            </div>
           </div>
         </div>
       </div>

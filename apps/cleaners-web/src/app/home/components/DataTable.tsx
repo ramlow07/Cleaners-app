@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   type ColumnDef,
   type ColumnFiltersState,
@@ -12,11 +12,11 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+} from "@tanstack/react-table";
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -25,8 +25,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -34,15 +34,18 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/components/ui/table";
 
 export interface DataTableProps<TData> {
-  data: TData[]
-  columns: ColumnDef<TData>[]
+  data: TData[];
+  columns: ColumnDef<TData>[];
   // Maybe add additional customization props later
 }
 
-export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<TData>) {
+export function DataTable<TData>({
+  data,
+  columns: userColumns,
+}: DataTableProps<TData>) {
   // Create the select column
   const selectColumn: ColumnDef<TData> = {
     id: "select",
@@ -65,7 +68,7 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
     ),
     enableSorting: false,
     enableHiding: false,
-  }
+  };
 
   // Create the actions column
   const actionsColumn: ColumnDef<TData> = {
@@ -73,7 +76,7 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
     //header: "Actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const item = row.original
+      const item = row.original;
 
       return (
         <DropdownMenu>
@@ -87,7 +90,9 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
               // We'll need to adapt this to be more generic
-              onClick={() => navigator.clipboard.writeText((item as any).id || "")}
+              onClick={() =>
+                navigator.clipboard.writeText((item as any).id || "")
+              }
             >
               Copy ID
             </DropdownMenuItem>
@@ -96,20 +101,20 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
             <DropdownMenuItem>Edit</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
-  }
+  };
 
   // Combine the columns
-  const allColumns = [selectColumn, ...userColumns, actionsColumn]
+  const allColumns = [selectColumn, ...userColumns, actionsColumn];
 
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
-  )
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data,
@@ -128,16 +133,18 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
     <div className="w-full">
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          placeholder="Filter location..."
+          value={
+            (table.getColumn("location")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("location")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -163,7 +170,7 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
                   >
                     {column.id}
                   </DropdownMenuCheckboxItem>
-                )
+                );
               })}
           </DropdownMenuContent>
         </DropdownMenu>
@@ -183,7 +190,7 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -243,5 +250,5 @@ export function DataTable<TData>({ data, columns: userColumns }: DataTableProps<
         </div>
       </div>
     </div>
-  )
+  );
 }
