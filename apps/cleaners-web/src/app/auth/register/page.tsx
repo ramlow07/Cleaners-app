@@ -11,7 +11,7 @@ import { UserAuthFormRegister } from "./components/user-auth-form";
 export default function RegisterPage() {
   // getting role params from URL
   const searchParams = useSearchParams();
-  const role = searchParams.get("role");
+  const userRole = searchParams.get("userRole");
 
   return (
     <>
@@ -44,6 +44,7 @@ export default function RegisterPage() {
         <div className="relative flex-col hidden h-full p-10 text-white bg-muted dark:border-r lg:flex">
           <div className="absolute inset-0 bg-zinc-900" />
           <div className="relative z-20 flex items-center text-lg font-medium">
+            {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -75,7 +76,7 @@ export default function RegisterPage() {
                 Enter your email below to create your account.
               </p>
             </div>
-            <UserAuthFormRegister userRole={role ?? "user"} />
+            <UserAuthFormRegister userRole={userRole ?? "user"} />
             <p className="px-8 text-sm text-center text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link

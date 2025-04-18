@@ -51,6 +51,7 @@ export function UserAuthFormRegister({
 
     checkSessionAndSetRole();
   }, [router, supabase]);
+
   // Email signup mutation - updated to passwordless
   const emailSignup = useMutation({
     mutationFn: async ({ email }: { email: string }) => {
@@ -67,6 +68,8 @@ export function UserAuthFormRegister({
       }
     },
   });
+
+  console.log("Selected role:", userRole);
 
   // GitHub OAuth mutation
   const githubSignIn = useMutation({
@@ -88,6 +91,11 @@ export function UserAuthFormRegister({
 
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault();
+
+    if (userRole) {
+      localStorage.setItem("userRole", userRole);
+    }
+
     emailSignup.mutate({ email });
   }
 
