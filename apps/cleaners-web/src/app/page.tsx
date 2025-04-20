@@ -7,8 +7,6 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 
 export default function Home() {
   return (
@@ -82,20 +80,21 @@ export default function Home() {
         <h1 className="text-5xl font-extrabold mb-4">
           Our cleaners are ready to help you!
         </h1>
-        <p className="text-lg mt-12 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg mt-8 mb-8 max-w-2xl mx-auto">
           Professional cleaners in your fingertips.
         </p>
         <Button size="lg" className="px-10">
           Try it
         </Button>
-
-        <Image
-          src="/cleaner2.png"
-          alt="Cleaner Illustration"
-          width={240}
-          height={240}
-          priority
-        />
+        <div className="mt-4 flex justify-start">
+          <Image
+            src="/cleaner-cta.png"
+            alt="Cleaner Illustration"
+            width={240}
+            height={240}
+            priority
+          />
+        </div>
       </section>
     </div>
   );
