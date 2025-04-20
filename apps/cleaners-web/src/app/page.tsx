@@ -77,6 +77,15 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative bg-white text-black py-32 px-6 text-center">
+        <div className="mt-4 flex justify-center mb-6">
+          <Image
+            src="/cleaner-cta.png"
+            alt="Cleaner Illustration"
+            width={240}
+            height={240}
+            priority
+          />
+        </div>
         <h1 className="text-5xl font-extrabold mb-4">
           Our cleaners are ready to help you!
         </h1>
@@ -86,15 +95,6 @@ export default function Home() {
         <Button size="lg" className="px-10">
           Try it
         </Button>
-        <div className="mt-4 flex justify-start">
-          <Image
-            src="/cleaner-cta.png"
-            alt="Cleaner Illustration"
-            width={240}
-            height={240}
-            priority
-          />
-        </div>
       </section>
     </div>
   );
