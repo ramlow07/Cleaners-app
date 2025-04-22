@@ -11,8 +11,8 @@ import { Button } from "@/components/ui/button";
 export default function ChooseRole() {
   const router = useRouter();
 
-  const handleRoleSelection = (role: "cleaner" | "contractor") => {
-    router.push(`/auth/register?role=${role}`);
+  const handleRoleSelection = (userRole: "cleaner" | "contractor") => {
+    router.push(`/auth/register?userRole=${userRole}`);
   };
 
   return (

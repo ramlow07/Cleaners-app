@@ -11,7 +11,7 @@ import { UserAuthFormRegister } from "./components/user-auth-form";
 export default function RegisterPage() {
   // getting role params from URL
   const searchParams = useSearchParams();
-  const role = searchParams.get("role");
+  const userRole = searchParams.get("userRole");
 
   return (
     <>
@@ -76,7 +76,7 @@ export default function RegisterPage() {
                 Enter your email below to create your account.
               </p>
             </div>
-            <UserAuthFormRegister userRole={role ?? "user"} />
+            <UserAuthFormRegister userRole={userRole ?? "user"} />
             <p className="px-8 text-sm text-center text-muted-foreground">
               By clicking continue, you agree to our{" "}
               <Link
