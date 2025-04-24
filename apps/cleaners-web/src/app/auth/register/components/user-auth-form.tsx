@@ -26,32 +26,6 @@ export function UserAuthFormRegister({
   const router = useRouter();
   const supabase = createClient();
 
-  useEffect(() => {
-    async function checkSessionAndSetRole() {
-      const { data } = await supabase.auth.getSession();
-      const session = data.session;
-
-      if (session?.user) {
-        const userRole = localStorage.getItem("userRole");
-
-        if (userRole) {
-          const { error } = await supabase.auth.updateUser({
-            data: { userRole },
-          });
-
-          if (error) {
-            console.error("Failed to update user role:", error.message);
-          } else {
-            localStorage.removeItem("userRole");
-            router.push("/home");
-          }
-        }
-      }
-    }
-
-    checkSessionAndSetRole();
-  }, [router, supabase]);
-
   // Email signup mutation - updated to passwordless
   const emailSignup = useMutation({
     mutationFn: async ({ email }: { email: string }) => {
