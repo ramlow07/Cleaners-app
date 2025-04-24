@@ -33,6 +33,9 @@ export function UserAuthFormRegister({
         email,
         options: {
           emailRedirectTo: `${window.location.origin}/auth/verify`,
+          data: {
+            role: userRole || "client",
+          },
         },
       });
     },
@@ -51,7 +54,7 @@ export function UserAuthFormRegister({
       return supabase.auth.signInWithOAuth({
         provider: "github",
         options: {
-          redirectTo: `${window.location.origin}/auth/verify`,
+          redirectTo: `${window.location.origin}/auth/verify?role=${userRole}`, // getting userRole params from URL
         },
       });
     },
